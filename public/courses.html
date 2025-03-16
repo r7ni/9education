@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>9EDUCATION - Explore Courses</title>
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicon/apple-touch-icon-152x152.png" />
+
+    <link rel="icon" type="image/png" href="/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-128.png" sizes="128x128" />
+
+    <meta name="application-name" content="9EDUCATION" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/favicon/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/favicon/mstile-310x310.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script>
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: 'class' };
+    </script>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Fixed Sidebar -->
+    <div class="fixed inset-y-0 left-0 w-64 p-4 flex flex-col bg-gradient-to-b from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 shadow-lg rounded-r-lg">
+      <div>
+        <h2 class="text-2xl text-center font-bold mb-6 dark:text-white">9EDUCATION</h2>
+        <ul>
+          <li class="mb-2">
+            <a href="/"
+               class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              Home
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="/courses"
+               class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+               Explore Courses
+            </a>
+          </li>
+          <!-- My Courses link -->
+          <li id="my-courses-li" class="mb-2" style="display: none;">
+            <a href="/mycourses"
+               class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              My Courses
+            </a>
+          </li>
+          <li class="mb-2">
+            <a id="auth-link" href="/login" style="visibility: hidden;"
+               class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              Log In - Sign Up
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="mt-auto">
+        <button id="toggle-mode"
+                class="w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+          Switch to Dark Mode
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content for Courses -->
+    <div class="ml-64 p-6 overflow-y-auto relative">
+      <h1 class="text-3xl font-bold mb-4">Explore Courses</h1>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Course cards (unchanged) -->
+          <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow cursor-pointer" onclick="showCourse('Introduction to Programming', 'This course is designed for beginners looking to develop problem-solving skills through coding. Students will learn the basics of programming languages like Python or JavaScript, covering concepts such as variables, loops, functions, and algorithms. By the end of the course, they will be able to write simple programs and understand core principles of software development.', '50 hours', 'https://as.virginia.edu/sites/as.virginia.edu/files/styles/natural_800/public/2023-07/Coding_Class.jpg?itok=30CoWf55')">
+            <img src="https://as.virginia.edu/sites/as.virginia.edu/files/styles/natural_800/public/2023-07/Coding_Class.jpg?itok=30CoWf55" alt="Programming" class="w-full h-40 object-cover rounded-lg mb-2">
+            <h2 class="text-xl font-semibold">Introduction to Programming</h2>
+          </div>
+
+          <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow cursor-pointer" onclick="showCourse('Introduction to Financial Literacy', 'This course introduces the fundamentals of personal finance, covering essential topics such as budgeting, saving, investing, and managing debt. Students will learn how to make informed financial decisions, understand credit scores, and plan for future financial stability. Whether for personal growth or career development, this course provides practical skills to build a strong financial foundation.', '60 hours', 'https://umaine.edu/undiscoveredmaine/wp-content/uploads/sites/527/2020/08/Business-Finance-1-423x264.jpg')">
+            <img src="https://umaine.edu/undiscoveredmaine/wp-content/uploads/sites/527/2020/08/Business-Finance-1-423x264.jpg" alt="Finance" class="w-full h-40 object-cover rounded-lg mb-2">
+            <h2 class="text-xl font-semibold">Introduction to Financial Literacy</h2>
+          </div>
+
+          <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow cursor-pointer" onclick="showCourse('Introduction to Web Development', 'This course covers the key technologies used to build modern websites, including HTML, CSS, and JavaScript. Students will learn both front-end and back-end development, exploring frameworks such as React and Node.js. Through hands-on projects, they will gain the skills needed to create responsive, user-friendly websites and web applications.', '50 hours', 'https://wcs.uwo.ca/upload/CE0060b.png')">
+            <img src="https://wcs.uwo.ca/upload/CE0060b.png" alt="Web Development" class="w-full h-40 object-cover rounded-lg mb-2">
+            <h2 class="text-xl font-semibold">Introduction to Web Development</h2>
+          </div>
+          <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow cursor-pointer" onclick="showCourse('Calculus 1', 'This course is certified by Carleton University. This course introduces the fundamental concepts of differential and integral calculus. Students will learn about limits, derivatives, and their applications in real-world problems, such as optimization and motion analysis. The course also covers the basics of integration, including definite and indefinite integrals. With a strong focus on problem-solving, Calculus 1 provides the mathematical foundation essential for advanced studies in science, engineering, and economics.', '30 hours', 'https://www.thoughtco.com/thmb/11bQUFsMvR1s0-d_pvRqUkiERQo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/calculus-on-blackboard-79338340-5be4695946e0fb0026d6856f.jpg')">
+            <img src="https://www.thoughtco.com/thmb/11bQUFsMvR1s0-d_pvRqUkiERQo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/calculus-on-blackboard-79338340-5be4695946e0fb0026d6856f.jpg" alt="Calculus 1" class="w-full h-40 object-cover rounded-lg mb-2">
+            <h2 class="text-xl font-semibold">Calculus 1</h2>
+            <div class="mt-2 flex items-center justify-center">
+              <img src="/image/carleton2.png" alt="Carleton University Logo" class="h-6">
+              <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mr-2">Certified by Carleton University</p>
+            </div>
+          </div>
+          <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow cursor-pointer" onclick="showCourse('Introduction to Biology', 'This course provides an introduction to the fundamental principles of biology, exploring topics such as cell structure, genetics, evolution, and ecosystems. Students will learn about the diversity of life, how organisms function, and the interactions between living systems. With a combination of lectures and lab work, Biology 101 lays the groundwork for further studies in life sciences and healthcare.', '50 hours', 'https://www.susla.edu/assets/susla/images/Biology.jpg')">
+            <img src="https://www.susla.edu/assets/susla/images/Biology.jpg" alt="Biology" class="w-full h-40 object-cover rounded-lg mb-2">
+            <h2 class="text-xl font-semibold">Introduction to Biology</h2>
+          </div>
+          <div class="bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow cursor-pointer" onclick="showCourse('Introduction to Chemistry', 'This course covers the core concepts of chemistry, including atomic structure, chemical bonding, reactions, and the properties of matter. Students will explore the periodic table, stoichiometry, and basic thermodynamics, gaining a foundational understanding of how substances interact. Through both theoretical and hands-on lab experiments, Chemistry 101 prepares students for more advanced topics in science and engineering.', '50 hours', 'https://courier.unesco.org/sites/default/files/styles/paragraph_medium_desktop/article/courier/photos/gettyimages-874157664.jpg.webp?itok=SvVGvlFq')">
+            <img src="https://courier.unesco.org/sites/default/files/styles/paragraph_medium_desktop/article/courier/photos/gettyimages-874157664.jpg.webp?itok=SvVGvlFq" alt="Chemistry" class="w-full h-40 object-cover rounded-lg mb-2">
+            <h2 class="text-xl font-semibold">Introduction to Chemistry</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course Details Modal (unchanged) -->
+    <div id="course-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full relative">
+        <button onclick="closeCourse()" class="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded"> X </button>
+        <img id="course-image" src="" alt="Course Image" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h2 id="course-title" class="text-2xl font-bold mb-2"></h2>
+        <p id="course-description" class="text-gray-700 dark:text-gray-300 mb-2"></p>
+        <p id="course-duration" class="text-gray-900 dark:text-gray-200 font-semibold"></p>
+    
+        <!-- Register/Remove Button -->
+        <button id="register-course-btn" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded w-full">
+          Register for this Course
+        </button>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded shadow hidden">
+      Registered for Course
+    </div>
+    <script>
+      function showCourse(title, description, duration, image) {
+        document.getElementById('course-title').innerText = title;
+        document.getElementById('course-description').innerText = description;
+        document.getElementById('course-duration').innerText = `Duration: ${duration}`;
+        document.getElementById('course-image').src = image;
+        
+        let registerButton = document.getElementById('register-course-btn');
+        registerButton.setAttribute('data-course', title);
+        
+        // Check if the course is already registered
+        let myCourses = JSON.parse(localStorage.getItem('myCourses')) || [];
+        if (myCourses.includes(title)) {
+          registerButton.innerText = "Remove Course";
+          registerButton.classList.remove("bg-blue-500");
+          registerButton.classList.add("bg-red-500");
+        } else {
+          registerButton.innerText = "Register for this Course";
+          registerButton.classList.remove("bg-red-500");
+          registerButton.classList.add("bg-blue-500");
+        }
+        
+        registerButton.onclick = function () {
+          toggleCourse(title);
+        };
+    
+        document.getElementById('course-modal').classList.remove('hidden');
+      }
+    
+      function closeCourse() {
+        document.getElementById('course-modal').classList.add('hidden');
+      }
+    
+      function toggleCourse(courseName) {
+      let myCourses = JSON.parse(localStorage.getItem('myCourses')) || [];
+      let registerButton = document.getElementById('register-course-btn');
+
+      if (myCourses.includes(courseName)) {
+        // Remove course
+        myCourses = myCourses.filter(course => course !== courseName);
+        registerButton.innerText = "Register for this Course";
+        registerButton.classList.remove("bg-red-500");
+        registerButton.classList.add("bg-blue-500");
+        showNotification(`Removed ${courseName}`);
+      } else {
+        // Add course
+        myCourses.push(courseName);
+        registerButton.innerText = "Remove Course";
+        registerButton.classList.remove("bg-blue-500");
+        registerButton.classList.add("bg-red-500");
+        showNotification(`Registered for ${courseName}`);
+        
+        // Call the server to register the course
+        fetch('/register-course', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ courseName }),
+        });
+      }
+
+      localStorage.setItem('myCourses', JSON.stringify(myCourses));
+    }
+        
+      function showNotification(message) {
+        let notification = document.getElementById("notification");
+        notification.innerText = message;
+        notification.classList.remove("hidden");
+    
+        setTimeout(() => {
+          notification.classList.add("hidden");
+        }, 2500);
+      }
+    </script>
+    <script src="/main.js"></script>
+  </body>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get the modal element
+      const modal = document.getElementById('course-modal');
+      
+      // Add click event listener to the modal
+      modal.addEventListener('click', (e) => {
+        // Check if the click is directly on the modal backdrop (not its children)
+        if (e.target === modal) {
+          closeCourse();
+        }
+      });
+    });</script>
+</html>

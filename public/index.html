@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>9EDUCATION - Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>9EDUCATION - Profile</title>
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicon/apple-touch-icon-152x152.png" />
+
+    <link rel="icon" type="image/png" href="/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-128.png" sizes="128x128" />
+
+    <meta name="application-name" content="9EDUCATION" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/favicon/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/favicon/mstile-310x310.png" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Immediately apply dark mode if enabled -->
+    <script>
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: 'class' };
+    </script>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Fixed Sidebar -->
+    <div class="fixed inset-y-0 left-0 w-64 p-4 flex flex-col bg-gradient-to-b from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 shadow-lg rounded-r-lg">
+      <div>
+        <h2 class="text-2xl text-center font-bold mb-6 dark:text-white">9EDUCATION</h2>
+        <ul>
+          <li class="mb-2">
+            <a href="/"
+              class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              Home
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="/courses"
+              class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              Explore Courses
+            </a>
+          </li>
+          <!-- My Courses link (only visible if logged in) -->
+          <li id="my-courses-li" class="mb-2" style="display: none;">
+            <a href="/mycourses"
+              class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              My Courses
+            </a>
+          </li>
+          <li class="mb-2">
+            <a id="auth-link" href="/login" style="visibility: hidden;"
+              class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              Log In - Sign Up
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Sidebar Bottom: Toggle Button is always visible -->
+      <div class="mt-auto">
+        <button id="toggle-mode"
+          class="w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+          Switch to Dark Mode
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content with left margin equal to sidebar width -->
+    <div class="ml-64 p-6 overflow-y-auto relative">
+      <div class="max-w-4xl mx-auto bg-white dark:bg-gray-700 dark:text-white p-8 rounded shadow relative">
+        <!-- Headline Section -->
+        <div class="relative mb-8">
+          <div class="relative z-10 text-center p-4">
+            <h1 class="text-4xl md:text-5xl font-bold relative z-10">
+              Empowering Lives With Education
+            </h1>
+          </div>
+        </div>
+
+        <!-- Intro text -->
+        <p class="mb-4 text-lg">
+          Education is not only a tool it is a human right and the means to growth and a stable life.
+          Yet, for many experiencing various forms of hardship, access to modern education is often out of reach.
+          Studies show that lack of education is both a cause and consequence of homelessness. Without a diploma, stable employment and housing become harder to achieve.
+        </p>
+        <p class="mb-4 text-lg font-semibold">
+          Our mission is simple:
+        </p>
+        <p class="mb-6 text-lg">
+          To provide accessible education for everyone, especially those facing barriers.
+        </p>
+        <p class="mb-6 text-lg">
+          Learning should never be limited by financial struggles. Education is for everyone.
+        </p>
+        <hr class="border-t border-gray-300 dark:border-gray-600 my-6" />
+<!-- Content Card -->
+<h2 class="text-2xl font-bold mb-4">Our Initiative</h2>
+<p class="text-lg">
+  With a staunch belief of "Ye are all fruits of one tree, the leaves of one branch, the flowers of one garden."
+  We firmly believe that the progress of our community can only be achieved once all of us progress.
+  By bridging the gap between educational institutions and those in need of support, we hope to position ourselves as the middle man.
+  Providing those in need with certified education and prerequisite courses to help them on their educational path.
+</p>
+<p class="text-lg">We aim to collaborate with universities and collages to provide an easy path for those in need.
+  To maintain a high standard of education, we offer volunteer TA opportunities open to students and professionals wishing to enrich their knowledge.</p>
+
+<hr class="border-t border-gray-300 dark:border-gray-600 my-6" />
+
+<h2 class="text-2xl font-bold mb-4">Ottawa's Crisis</h2>
+<p class="mb-4 text-lg">
+  Financial stability remains a pressing issue in Ottawa:
+</p>
+<ul class="list-disc ml-6 mb-6 text-lg">
+  <li>Nearly 3,000 people were counted as homeless in Ottawa’s 2024 Point-in-Time survey.</li>
+  <li>Around 9,000 people used Ottawa’s emergency shelters in 2023.</li>
+  <li>Only 28% of homeless respondents had completed high school, and just 17% had any post-secondary education.</li>
+  <li>Among homeless youth, between 63% and 90% did not graduate high school.</li>
+  <li>Lower educational ceilings is a cause and a consequence of homelessness, limiting job opportunities and income stability.</li>
+</ul>
+<h2 class="text-2xl font-bold mb-4">If you give a man a fish, he will be hungry tomorrow. If you teach a man to fish, he will be richer forever.</h2>
+
+</div>
+    </div>
+    <script src="/main.js"></script>
+  </body>
+</html>
