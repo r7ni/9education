@@ -1,1 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>9EDUCATION - Calculus 1</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>9EDUCATION - Profile</title>
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicon/apple-touch-icon-152x152.png" />
 
+    <link rel="icon" type="image/png" href="/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-128.png" sizes="128x128" />
+
+    <meta name="application-name" content="9EDUCATION" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/favicon/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/favicon/mstile-310x310.png" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script>
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: 'class' };
+    </script>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Fixed Sidebar (same as other pages) -->
+    <div class="fixed inset-y-0 left-0 w-64 p-4 flex flex-col bg-gradient-to-b from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 shadow-lg rounded-r-lg">
+      <div>
+        <h2 class="text-2xl text-center font-bold mb-6 dark:text-white">9EDUCATION</h2>
+        <ul>
+          <li class="mb-2">
+            <a href="/" class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              Home
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="/courses" class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              Explore Courses
+            </a>
+          </li>
+          <li id="my-courses-li" class="mb-2" style="display: none;">
+            <a href="/mycourses" class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              My Courses
+            </a>
+          </li>
+          <li class="mb-2">
+            <a id="auth-link" href="/login" style="visibility: hidden;"
+               class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              Log In - Sign Up
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="mt-auto">
+        <button id="toggle-mode" class="w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+          Switch to Dark Mode
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content for Calculus 1 -->
+    <div class="ml-64 p-6 overflow-y-auto relative" id="content-container">
+      <!-- Course Header -->
+      <div class="max-w-4xl mx-auto bg-white dark:bg-gray-700 dark:text-white p-6 rounded shadow mb-6">
+        <div class="flex flex-col md:flex-row items-center">
+          <img src="https://www.thoughtco.com/thmb/11bQUFsMvR1s0-d_pvRqUkiERQo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/calculus-on-blackboard-79338340-5be4695946e0fb0026d6856f.jpg" alt="Calculus 1" class="w-full md:w-1/3 h-40 object-cover rounded-lg mb-4 md:mb-0 md:mr-6">
+          <div>
+            <h1 class="text-3xl font-bold mb-2">Calculus 1</h1>
+            <div class="flex items-center mb-4">
+              <img src="/image/carleton2.png" alt="Carleton University Logo" class="h-6">
+              <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mr-2">Certified by Carleton University</p>
+            </div>
+            <p class="text-gray-700 dark:text-gray-300">This course introduces the fundamental concepts of differential and integral calculus.</p>
+            <p class="mt-2 font-semibold">Duration: Approx. 30 hours</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Navigation Tabs -->
+      <div class="max-w-4xl mx-auto bg-white dark:bg-gray-700 p-4 rounded shadow mb-6">
+        <div class="flex flex-wrap border-b border-gray-300 dark:border-gray-600">
+          <button class="tab-button py-2 px-4 font-medium tab-active" data-tab="lectures">Lectures</button>
+          <button class="tab-button py-2 px-4 font-medium" data-tab="exercises">Exercises</button>
+          <button class="tab-button py-2 px-4 font-medium" data-tab="syllabus">Course Syllabus</button>
+          <button class="tab-button py-2 px-4 font-medium" data-tab="quizzes">Quizzes</button>
+          <button class="tab-button py-2 px-4 font-medium" data-tab="ta-zooms">TA Zooms</button>
+        </div>
+      </div>
+
+      <!-- Tab Content Sections -->
+      <div class="max-w-4xl mx-auto">
+        <!-- Lectures Tab -->
+        <div id="lectures" class="tab-content bg-white dark:bg-gray-700 p-6 rounded shadow">
+          <h2 class="text-2xl font-bold mb-4">Lectures</h2>
+          <div class="space-y-4">
+            <div class="border-l-4 border-blue-500 pl-4 py-2">
+              <h3 class="text-xl font-semibold">Lecture 1: Functions and Graphs Review</h3>
+              <p class="text-gray-700 dark:text-gray-300">This lecture reviews key concepts in functions and graphs, including the vertical and horizontal line tests, domain and range, inverse functions, and composite functions. They also cover polynomial properties, trigonometric identities, and solving logarithmic equations. Additionally, hyperbolic functions are introduced.</p>
+              <a href="/courses/calculus-1/lecture1" class="text-blue-500 hover:underline mt-2 inline-block">Access Powerpoint →</a>
+            </div>
+            <div class="border-l-4 border-blue-500 pl-4 py-2">
+              <h3 class="text-xl font-semibold">Lecture 2: Derivatives, Definitions, and Basic Rules</h3>
+              <p class="text-gray-700 dark:text-gray-300">This lecture covers fundamental calculus concepts, including an introduction to derivatives and integrals, the definition of limits, and strategies for evaluating limits graphically, numerically, and algebraically. They also discuss the limit laws, which are essential for solving limit problems.</p>
+              <a href="#" class="text-blue-500 hover:underline mt-2 inline-block">Access Powerpoint →</a>
+            </div>
+            <div class="border-l-4 border-blue-500 pl-4 py-2">
+              <h3 class="text-xl font-semibold">Lecture 3: Applications of Derivatives</h3>
+              <p class="text-gray-700 dark:text-gray-300">This lecture covers continuity and the precise definition of a limit. They explain different types of discontinuities, such as when a function is undefined at a point, when the limit does not exist, or when the limit exists but does not match the function's value. The precise definition of a limit is introduced, likely using the epsilon-delta approach.</p>
+              <a href="#" class="text-blue-500 hover:underline mt-2 inline-block">Access Powerpoint →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exercises Tab -->
+        <div id="exercises" class="tab-content bg-white dark:bg-gray-700 p-6 rounded shadow hidden">
+          <h2 class="text-2xl font-bold mb-4">Exercises</h2>
+          <div class="space-y-4">
+            <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4">
+              <h3 class="text-xl font-semibold">Exercise Set 1: Fundamentals Review</h3>
+              <p class="text-gray-700 dark:text-gray-300 mb-3">Practice problems focused on reviewing the fundamentals. Answers at the end.</p>
+              <a href="/courses/calculus-1/exercise1.pdf" download class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600 transition-colors">Download PDF</a>
+            </div>
+            <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4">
+              <h3 class="text-xl font-semibold">Exercise Set 2: Limits</h3>
+              <p class="text-gray-700 dark:text-gray-300 mb-3">Practice problems focused on calculating and understanding limits. Answers at the end.</p>
+              <a href="#" class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600 transition-colors">Download PDF</a>
+            </div>
+            <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4">
+              <h3 class="text-xl font-semibold">Exercise Set 3: Derivatives</h3>
+              <p class="text-gray-700 dark:text-gray-300 mb-3">Practice problems on calculating derivatives and applying derivative rules. Answers at the end.</p>
+              <a href="#" class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600 transition-colors">Download PDF</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Syllabus Tab -->
+        <div id="syllabus" class="tab-content bg-white dark:bg-gray-700 p-6 rounded shadow hidden">
+          <h2 class="text-2xl font-bold mb-4">Course Syllabus</h2>
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-xl font-semibold">Course Overview</h3>
+              <p class="text-gray-700 dark:text-gray-300">This course provides a comprehensive introduction to differential and integral calculus, covering limits, derivatives, integrals, and their applications.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold">Learning Objectives</h3>
+              <ul class="list-disc ml-6 text-gray-700 dark:text-gray-300">
+                <li>Understand the concept of limits and continuity</li>
+                <li>Master differentiation techniques and their applications</li>
+                <li>Develop skills in integration and its applications</li>
+                <li>Apply calculus to solve real-world problems</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold">Weekly Schedule</h3>
+              <div class="border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden mt-2">
+                <table class="min-w-full divide-y divide-gray-300 dark:divide-gray-600">
+                  <thead class="bg-gray-100 dark:bg-gray-800">
+                    <tr>
+                      <th class="py-2 px-4 text-left">Week</th>
+                      <th class="py-2 px-4 text-left">Topic</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
+                    <tr>
+                      <td class="py-2 px-4">Lecture 1</td>
+                      <td class="py-2 px-4">Fundamentals Review</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2 px-4">Lecture 2</td>
+                      <td class="py-2 px-4">Limits and Continuity</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2 px-4">Lecture 3</td>
+                      <td class="py-2 px-4">Definition of the Derivative</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2 px-4">Lecture 4</td>
+                      <td class="py-2 px-4">Differentiation Rules</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2 px-4">Lecture 5</td>
+                      <td class="py-2 px-4">Applications of Derivatives</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="mt-4">
+              <a href="#" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors">Download Full Syllabus</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quizzes Tab -->
+        <div id="quizzes" class="tab-content bg-white dark:bg-gray-700 p-6 rounded shadow hidden">
+          <h2 class="text-2xl font-bold mb-4">Quizzes</h2>
+          <div class="space-y-4">
+            <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4">
+              <h3 class="text-xl font-semibold">Quiz 1: Fundamentals Review</h3>
+              <p class="text-gray-700 dark:text-gray-300 mb-2">Test your understanding of calculus-related fundamental concepts, including functions, limits, and basic differentiation.</p>
+              <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <span class="mr-4">Time: 30 minutes</span>
+                <span>Questions: 10</span>
+              </div>
+              <a href="#" class="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-600 transition-colors">Start Quiz</a>
+              
+            </div>
+            <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4">
+              <h3 class="text-xl font-semibold">Quiz 2: Limits and Continuity</h3>
+              <p class="text-gray-700 dark:text-gray-300 mb-2">Test your understanding of limits and continuity concepts.</p>
+              <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <span class="mr-4">Time: 45 minutes</span>
+                <span>Questions: 15</span>
+              </div>
+              <a href="#" class="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-600 transition-colors">Start Quiz</a>
+            </div>
+            <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4 opacity-50">
+              <h3 class="text-xl font-semibold">Quiz 3: Derivatives</h3>
+              <p class="text-gray-700 dark:text-gray-300 mb-2">Test your skills in calculating derivatives and understanding their properties.</p>
+              <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <span class="mr-4">Time: 45 minutes</span>
+                <span>Questions: 12</span>
+              </div>
+              <div class="text-yellow-600 dark:text-yellow-400 font-medium">Available after completing Lecture 3</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TA Zooms Tab -->
+        <div id="ta-zooms" class="tab-content bg-white dark:bg-gray-700 p-6 rounded shadow hidden">
+          <h2 class="text-2xl font-bold mb-4">TA Zoom Sessions</h2>
+          <p class="mb-4 text-gray-700 dark:text-gray-300">Connect with teaching assistants for additional help and clarification on course materials.</p>
+          
+          <div class="space-y-4">
+            <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4">
+              <div class="flex flex-col md:flex-row md:items-center justify-between">
+                <div>
+                  <h3 class="text-xl font-semibold">Weekly Office Hours</h3>
+                  <p class="text-gray-700 dark:text-gray-300">Mondays and Wednesdays, 4:00 PM - 6:00 PM EST</p>
+                  <p class="text-gray-700 dark:text-gray-300">TA: Sarah Johnson, Mathematics Department</p>
+                </div>
+                <a href="#" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors mt-3 md:mt-0">Join Zoom</a>
+              </div>
+            </div>
+            
+            <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4">
+              <div class="flex flex-col md:flex-row md:items-center justify-between">
+                <div>
+                  <h3 class="text-xl font-semibold">Problem-Solving Session</h3>
+                  <p class="text-gray-700 dark:text-gray-300">Fridays, 3:00 PM - 5:00 PM EST</p>
+                  <p class="text-gray-700 dark:text-gray-300">TA: Michael Chen, Engineering Department</p>
+                </div>
+                <a href="#" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors mt-3 md:mt-0">Join Zoom</a>
+              </div>
+            </div>
+            
+            <div class="border border-gray-300 dark:border-gray-600 rounded-lg p-4">
+              <h3 class="text-xl font-semibold mb-2">Schedule a One-on-One Session</h3>
+              <p class="text-gray-700 dark:text-gray-300 mb-3">Need personalized help? Schedule a 30-minute one-on-one session with a TA.</p>
+              <a href="#" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition-colors">Book Appointment</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Access Denied Message (initially hidden) -->
+    <div id="access-denied" class="ml-64 p-6 hidden">
+      <div class="max-w-4xl mx-auto bg-white dark:bg-gray-700 p-8 rounded shadow text-center">
+        <h2 class="text-2xl font-bold mb-4 text-red-600">Access Denied</h2>
+        <p class="mb-4">You must be registered for this course to access the content.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="/login" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors">Log In</a>
+          <a href="/courses" class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 transition-colors">Explore Courses</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="/main.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Tab switching functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            tabButtons.forEach(btn => btn.classList.remove('tab-active'));
+            // Add active class to clicked button
+            button.classList.add('tab-active');
+            
+            // Hide all tab contents
+            tabContents.forEach(content => content.classList.add('hidden'));
+            // Show the selected tab content
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(tabId).classList.remove('hidden');
+          });
+        });
+        
+        // Modified access check with delay to wait for main.js
+        const checkAccess = () => {
+          // Wait a moment for main.js to execute its fetch and set window.isLoggedIn
+          setTimeout(() => {
+            // First check if logged in
+            if (!window.isLoggedIn) {
+              showAccessDenied();
+              return;
+            }
+            
+            // Then check if registered for this course
+            const myCourses = JSON.parse(localStorage.getItem('myCourses')) || [];
+            if (!myCourses.includes('Calculus 1')) {
+              showAccessDenied();
+              return;
+            }
+            
+            // If both conditions are met, show content
+            document.getElementById('content-container').classList.remove('hidden');
+            document.getElementById('access-denied').classList.add('hidden');
+          }, 500); // 500ms delay
+        };
+        
+        const showAccessDenied = () => {
+          document.getElementById('content-container').classList.add('hidden');
+          document.getElementById('access-denied').classList.remove('hidden');
+        };
+        
+        // Add styles for active tab
+        const style = document.createElement('style');
+        style.textContent = `
+          .tab-active {
+            border-bottom: 2px solid #3b82f6;
+            color: #3b82f6;
+          }
+          .dark .tab-active {
+            border-bottom: 2px solid #60a5fa;
+            color: #60a5fa;
+          }
+        `;
+        document.head.appendChild(style);
+        
+        // Run access check
+        checkAccess();
+      });
+    </script>
+  </body>
+</html>
