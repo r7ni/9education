@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>9EDUCATION - Calculus 1: Lecture 1</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>9EDUCATION - Profile</title>
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicon/apple-touch-icon-152x152.png" />
+
+    <link rel="icon" type="image/png" href="/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-128.png" sizes="128x128" />
+
+    <meta name="application-name" content="9EDUCATION" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/favicon/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/favicon/mstile-310x310.png" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script>
+      // Set worker path for PDF.js
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+      
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: 'class' };
+    </script>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      #pdf-container {
+        height: 75vh;
+        overflow: auto;
+        background-color: #f0f0f0;
+      }
+      
+      .dark #pdf-container {
+        background-color: #374151;
+      }
+      
+      #pdf-canvas {
+        display: block;
+        margin: 0 auto;
+        border: 1px solid #ddd;
+      }
+      
+      .dark #pdf-canvas {
+        border-color: #4b5563;
+      }
+      
+      .pdf-controls {
+        padding: 10px;
+        background-color: #e5e7eb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .dark .pdf-controls {
+        background-color: #1f2937;
+      }
+      
+      .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border-left-color: #3b82f6;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+      }
+      
+      .dark .spinner {
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        border-left-color: #60a5fa;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Fixed Sidebar -->
+    <div class="fixed inset-y-0 left-0 w-64 p-4 flex flex-col bg-gradient-to-b from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 shadow-lg rounded-r-lg" id="sidebar">
+      <div>
+        <h2 class="text-2xl text-center font-bold mb-6 dark:text-white">9EDUCATION</h2>
+        <ul>
+          <li class="mb-2">
+            <a href="/" class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              Home
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="/courses" class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              Explore Courses
+            </a>
+          </li>
+          <li id="my-courses-li" class="mb-2" style="display: none;">
+            <a href="/mycourses" class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              My Courses
+            </a>
+          </li>
+          <li class="mb-2">
+            <a id="auth-link" href="/login" style="visibility: hidden;"
+               class="block w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+              Log In - Sign Up
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="mt-auto">
+        <button id="toggle-mode" class="w-full py-2 px-4 bg-white dark:bg-gray-600 rounded-lg text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-500 transition-transform active:scale-95">
+          Switch to Dark Mode
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-64 p-6 overflow-y-auto relative">
+      <div class="max-w-6xl mx-auto bg-white dark:bg-gray-700 dark:text-white p-6 rounded shadow mb-6">
+        <div class="flex justify-between items-center mb-4">
+          <h1 class="text-2xl font-bold">Lecture 1: Functions and Graphs Review</h1>
+          <a href="/courses/calculus-1" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors">
+            Back to Course
+          </a>
+        </div>
+        
+        <!-- PDF Viewer Container -->
+        <div class="rounded-lg overflow-hidden">
+          <!-- PDF Controls -->
+          <div class="pdf-controls">
+            <button id="prev-page" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed">Previous</button>
+            <span id="page-info" class="font-medium">Page 0 of 0</span>
+            <button id="next-page" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed">Next</button>
+            <select id="zoom-level" class="ml-4 px-2 py-1 border rounded bg-white dark:bg-gray-600 dark:text-white">
+              <option value="0.5">50%</option>
+              <option value="0.75">75%</option>
+              <option value="1" selected>100%</option>
+              <option value="1.25">125%</option>
+              <option value="1.5">150%</option>
+              <option value="2">200%</option>
+            </select>
+          </div>
+          
+          <!-- PDF Viewer -->
+          <div id="pdf-container" class="relative">
+            <div id="loading-indicator" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <div class="spinner"></div>
+              <p class="mt-2 text-center">Loading PDF...</p>
+            </div>
+            <canvas id="pdf-canvas"></canvas>
+          </div>
+        </div>
+        
+        <!-- Download Options -->
+        <div class="mt-6 flex flex-wrap gap-4">
+          <a href="/courses/calculus-1/lecture1.pptx" download class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition-colors">
+            Download PowerPoint (.pptx)
+          </a>
+          <a href="/courses/calculus-1/lecture1.pdf" download class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition-colors">
+            Download PDF Version
+          </a>
+        </div>
+      </div>
+      
+      <!-- Additional Resources Section -->
+      <div class="max-w-6xl mx-auto bg-white dark:bg-gray-700 dark:text-white p-6 rounded shadow">
+        <h2 class="text-xl font-bold mb-4">Additional Resources</h2>
+        <ul class="space-y-2">
+          <li class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <a href="#" class="text-blue-500 hover:underline">Lecture 1 Notes (PDF)</a>
+          </li>
+          <li class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <a href="#" class="text-blue-500 hover:underline">Supplementary Video: Functions Review</a>
+          </li>
+          <li class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <a href="#" class="text-blue-500 hover:underline">Practice Problems: Set 1</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Access Denied Message (initially hidden) -->
+    <div id="access-denied" class="ml-64 p-6 hidden">
+      <div class="max-w-4xl mx-auto bg-white dark:bg-gray-700 p-8 rounded shadow text-center">
+        <h2 class="text-2xl font-bold mb-4 text-red-600">Access Denied</h2>
+        <p class="mb-4">You must be registered for this course to access the content.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="/login" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors">Log In</a>
+          <a href="/courses" class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 transition-colors">Explore Courses</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="/main.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Access check logic
+        const checkAccess = () => {
+          setTimeout(() => {
+            if (!window.isLoggedIn) {
+              showAccessDenied();
+              return;
+            }
+            
+            const myCourses = JSON.parse(localStorage.getItem('myCourses')) || [];
+            if (!myCourses.includes('Calculus 1')) {
+              showAccessDenied();
+              return;
+            }
+          }, 500);
+        };
+        
+        const showAccessDenied = () => {
+          document.querySelector('.ml-64.p-6.overflow-y-auto').classList.add('hidden');
+          document.getElementById('access-denied').classList.remove('hidden');
+        };
+        
+        // Run access check
+        checkAccess();
+        
+        // PDF.js implementation
+        const pdfContainer = document.getElementById('pdf-container');
+        const pdfCanvas = document.getElementById('pdf-canvas');
+        const ctx = pdfCanvas.getContext('2d');
+        const prevButton = document.getElementById('prev-page');
+        const nextButton = document.getElementById('next-page');
+        const pageInfo = document.getElementById('page-info');
+        const zoomSelect = document.getElementById('zoom-level');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        
+        let pdfDoc = null;
+        let pageNum = 1;
+        let pageRendering = false;
+        let pageNumPending = null;
+        let scale = 1.0; // Default zoom level
+        
+        // Load the PDF
+        pdfjsLib.getDocument('/courses/calculus-1/lecture1.pdf').promise.then(function(pdf) {
+          pdfDoc = pdf;
+          pageInfo.textContent = `Page ${pageNum} of ${pdfDoc.numPages}`;
+          
+          // Initial button state
+          prevButton.disabled = pageNum <= 1;
+          nextButton.disabled = pageNum >= pdfDoc.numPages;
+          
+          // Render the first page
+          renderPage(pageNum);
+          
+          // Hide loading indicator
+          loadingIndicator.style.display = 'none';
+        }).catch(function(error) {
+          // Show error
+          loadingIndicator.innerHTML = `<p class="text-red-500">Error loading PDF: ${error.message}</p>`;
+          console.error('Error loading PDF:', error);
+        });
+        
+        // Render a specific page
+        function renderPage(num) {
+          pageRendering = true;
+          
+          // Update loading indicator during page change
+          loadingIndicator.style.display = 'block';
+          
+          // Update page info
+          pageInfo.textContent = `Page ${num} of ${pdfDoc.numPages}`;
+          
+          // Update button states
+          prevButton.disabled = num <= 1;
+          nextButton.disabled = num >= pdfDoc.numPages;
+          
+          // Get the page
+          pdfDoc.getPage(num).then(function(page) {
+            // Compute dimensions at current scale
+            const viewport = page.getViewport({ scale: scale });
+            pdfCanvas.height = viewport.height;
+            pdfCanvas.width = viewport.width;
+            
+            // Render PDF page
+            const renderContext = {
+              canvasContext: ctx,
+              viewport: viewport
+            };
+            
+            const renderTask = page.render(renderContext);
+            
+            // Wait for rendering to finish
+            renderTask.promise.then(function() {
+              pageRendering = false;
+              loadingIndicator.style.display = 'none';
+              
+              // Check if there's a pending page
+              if (pageNumPending !== null) {
+                renderPage(pageNumPending);
+                pageNumPending = null;
+              }
+            });
+          });
+        }
+        
+        // Go to previous page
+        function previousPage() {
+          if (pageNum <= 1) return;
+          pageNum--;
+          queueRenderPage(pageNum);
+        }
+        
+        // Go to next page
+        function nextPage() {
+          if (pageNum >= pdfDoc.numPages) return;
+          pageNum++;
+          queueRenderPage(pageNum);
+        }
+        
+        // Queue page rendering to avoid multiple rendering at once
+        function queueRenderPage(num) {
+          if (pageRendering) {
+            pageNumPending = num;
+          } else {
+            renderPage(num);
+          }
+        }
+        
+        // Handle zoom change
+        function changeZoom() {
+          scale = parseFloat(zoomSelect.value);
+          queueRenderPage(pageNum);
+        }
+        
+        // Event listeners
+        prevButton.addEventListener('click', previousPage);
+        nextButton.addEventListener('click', nextPage);
+        zoomSelect.addEventListener('change', changeZoom);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            previousPage();
+          } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            nextPage();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
